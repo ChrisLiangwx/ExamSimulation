@@ -66,6 +66,8 @@ public class ManageQBJtable extends JFrame
 						String sql="delete¡¡from¡¡question¡¡where¡¡Owner=? and QuestionBankName=?";//É¾³ýquestion±í
 						String []str= {User.userName,SelectedQB[i]};
 						delete.AddOrUpdate(sql, str);
+						SelectedQB[i]=null;
+						ChangedQB[i]=false;
 					}
 				}
 			}
