@@ -183,6 +183,7 @@ public class Login {
 	            
 				
 				String pwd=new String(jpasswordfield_InputPWD.getPassword());
+				String encryptpwd=Md5encrypt.md5Password(pwd);
 				//判断输入密码是否合法
 				if(pwd.equals("")){
 					JOptionPane.showMessageDialog(null, "密码不能为空", "错误",JOptionPane.ERROR_MESSAGE );
@@ -190,7 +191,7 @@ public class Login {
 				}else if(pwd.length()<4||pwd.length()>10){
 					JOptionPane.showMessageDialog(null, "密码长度不符合要求，请输入4-10位字符", "错误",JOptionPane.ERROR_MESSAGE );
 					return ;
-				}else if(!pwd.equals(rightPWD)) {
+				}else if(!encryptpwd.equals(rightPWD)) {
 					JOptionPane.showMessageDialog(null, "账号或密码错误", "错误",JOptionPane.ERROR_MESSAGE );
 					return ;
 				}else {

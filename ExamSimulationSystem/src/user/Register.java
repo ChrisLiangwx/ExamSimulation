@@ -241,11 +241,11 @@ public class Register {
 					
 				//若输入合法，则存入数据库
 				if(accountlegal&&namelegal&&pwdlegal) {
-					
+					String encryptpwd=Md5encrypt.md5Password(pwd);
 					JOptionPane.showMessageDialog(null, "注册成功", "成功",JOptionPane.INFORMATION_MESSAGE);
 					DBUtil user=new DBUtil();
 					String sql="insert into [user] (UserID,UserName,UserPWD) values(?,?,?)";//user是数据库中的关键字，因此需要加上[]
-					String[] str=new String[]{account,name,pwd};
+					String[] str=new String[]{account,name,encryptpwd};
 					user.AddOrUpdate(sql, str);
 					System.out.println("已将用户"+name+"保存至数据库中user表");
 					frame.dispose();
